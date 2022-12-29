@@ -1,0 +1,30 @@
+body {
+    background-color: white;
+}
+.container {
+    text-align: center;
+}
+.nav-buttons a:link, .nav-buttons a:visited {
+    background-color: white;
+    color: black;
+    padding: 12px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2rem;
+}  
+.nav-buttons a:hover, .nav-buttons a:active {
+    background-color: purple;
+    color: white;
+}
+.node-viewer img {
+    padding: 20;
+    margin: 0 auto;
+    max-width: auto;
+    height: 40vw;
+}
+.nav-info {
+    font-family: sans-serif;
+    color: black;
+    font-size: 1.5rem;
+}
