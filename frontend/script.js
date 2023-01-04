@@ -59,7 +59,7 @@ function updatePosition(responseData) {
 
   // Display position & heading on page
   currentNodeText.innerHTML = "Current node ID: " + currentNodeID;
-  currentHeadingText.innerHTML = "Current heading: " + currentHeading;
+  currentHeadingText.innerHTML = "Current heading: " + currentHeading + "°";
 }
 
 // On page load, call the "here" movement
