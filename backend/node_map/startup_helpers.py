@@ -5,7 +5,7 @@ from node_map.img_to_angle_dict import img_dir_to_dict
 
 # map nav init
 MAP_FILE = "./node_map/maps/beach.yaml"
-IMAGE_DIR = "./static/img"
+IMAGE_DIR = "../static/img"
 
 
 def load_map_file(f):
