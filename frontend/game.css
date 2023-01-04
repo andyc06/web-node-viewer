@@ -14,7 +14,7 @@ body {
     font-size: 2rem;
 }  
 .nav-buttons a:hover, .nav-buttons a:active {
-    background-color: purple;
+    background-color: rgb(107, 38, 255);
     color: white;
 }
 .node-viewer img {
