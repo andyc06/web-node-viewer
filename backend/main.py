@@ -14,11 +14,6 @@ from node_map.startup_helpers import run_map_startup
 world_map = run_map_startup()
 
 origins = [
-    "http://localhost.tiangolo.com",
-    "https://localhost.tiangolo.com",
-    "http://localhost",
-    "http://localhost:8080",
-    # "http://localhost:7600",
     "*",
 ]
 
