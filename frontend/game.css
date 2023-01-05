@@ -1,8 +1,13 @@
 body {
     background-color: white;
-}
-.container {
     text-align: center;
+}
+.node-viewer img {
+    padding-top: 5;
+    padding-left: 5;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 80vh;
 }
 .nav-buttons a:link, .nav-buttons a:visited {
     background-color: white;
@@ -12,16 +17,10 @@ body {
     text-decoration: none;
     display: inline-block;
     font-size: 2rem;
-}  
+}
 .nav-buttons a:hover, .nav-buttons a:active {
     background-color: rgb(107, 38, 255);
     color: white;
-}
-.node-viewer img {
-    padding: 20;
-    margin: 0 auto;
-    max-width: auto;
-    height: 40vw;
 }
 .nav-info {
     font-family: sans-serif;
