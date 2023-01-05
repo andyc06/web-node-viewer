@@ -12,6 +12,11 @@ This application implements a viewer for pre-rendered images of nodes in a 3D sc
 4. source venv/bin/activate
 5. python -m pip install -r requirements.txt
 
+## First time map setup
+1. cd to ./backend/node_map
+2. Run generate_combined_map.py
+3. maps/beach-combined.yaml file will be created (or overwritten if it exists)
+
 ## Running
 
 1. uvicorn main:app --reload
