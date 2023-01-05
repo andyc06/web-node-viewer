@@ -6,9 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 # node navigation & helpers
-#import node_map.navigator as nav
 from node_map.startup_helpers import run_map_startup
-#from node_map.img_to_angle_dict import img_dir_to_dict
 
 # map startup
 world_map = run_map_startup()
@@ -33,10 +31,11 @@ app.add_middleware(
 )
 
 
-# GET isn't really used for this app
+# GET method isn't supposed to be used, so suggest that the user
+# open the frontend webpage instead.
 @app.get("/")
 async def root():
-    return {"message": "Hello World!"}
+    return {"message": "Try launching game.html in the frontend folder"}
 
 
 @app.post("/travel/")
