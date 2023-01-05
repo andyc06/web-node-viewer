@@ -1,7 +1,23 @@
-from pathlib import Path
-import os
+import yaml
 import re
+from pathlib import Path
 from itertools import groupby
+
+MAP_INPUT_FILE = "./maps/beach.yaml"
+IMAGE_DIR = "../../static/img"
+
+
+def load_map_file(f):
+    """
+    Load a node metadata YAML file and return it as a list of dictionaries
+    One dictionary per node
+    """
+    with open(f, mode = "r") as file:
+        # The FullLoader parameter handles the conversion from YAML
+        # scalar values to Python the dictionary format
+        node_dict = yaml.load(file, Loader = yaml.FullLoader)
+    
+    return node_dict
 
 
 def img_dir_to_dict(image_dir):
@@ -15,7 +31,7 @@ def img_dir_to_dict(image_dir):
     all_image_attributes = []
     
     for filename in images:
-        base_filename = os.path.basename(filename)  # extract the filename from the posix path
+        base_filename = Path(filename).name  # extract the filename from the posix path
         m = re.match(r"node(?P<node_id>.*)__angle_(?P<angle>.*).png", base_filename)  # extract numbers from templated filename that Blender produces
         node_id = int(m.group("node_id"))  # comes out as a string, but needs to be an int
         angle = int(m.group("angle"))
@@ -31,7 +47,7 @@ def img_dir_to_dict(image_dir):
     
     '''
     target format:
-    'images': {0: 'node4__angle_0.png', 90: 'node4__angle_90.png', 180: 'node4__angle_180png', 270: 'node4__angle_270.png'}
+    1: {0: 'node4__angle_0.png', 90: 'node4__angle_90.png', 180: 'node4__angle_180png', 270: 'node4__angle_270.png'}
     '''
 
     # initialize a final empty dict to hold angle & filename dicts keyed by node_id
@@ -43,3 +59,26 @@ def img_dir_to_dict(image_dir):
         final_dict[key] = inner_dict
 
     return final_dict
+
+
+def generate_map_yaml():
+    node_info = load_map_file(MAP_INPUT_FILE)  # n will be a list of dicts (1 per node)
+    img_dict = img_dir_to_dict(IMAGE_DIR)
+
+    combined_node_dicts = []
+
+    for d in node_info:
+        n_id = d.get("id")
+        images = img_dict.get(n_id)
+        d.update({"images":images})
+        combined_node_dicts.append(d)
+
+    with open("maps/beach-combined.yaml", mode = "w") as file:
+        yaml.dump(combined_node_dicts, file)
+
+    # one-time map setup complete, now the combined YAML can be loaded and passed
+    # to the NodeNavigator constructor and everything else *should* work
+    # normally -- to be tested!
+
+if __name__ == "__main__":
+   generate_map_yaml()
