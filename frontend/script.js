@@ -1,5 +1,5 @@
 // Node display elements
-const imagePath = "../static/img/";
+const imagePath = "https://andysokay.com/viewer-client/img/";
 const nodeImage = document.getElementById("node-image");
 const currentNodeText = document.getElementById("current-node");
 const currentHeadingText = document.getElementById("current-heading");
@@ -9,6 +9,25 @@ const buttonCounterclockwise = document.getElementById("counterclockwise");
 const buttonForward = document.getElementById("forward");
 const buttonClockwise = document.getElementById("clockwise");
 
+// WASD keyboard navigation
+const keyboardScope = document.querySelector("body");
+const WASDRouter = {
+    KeyW: "forward",
+    KeyA: "counterclockwise",
+    // KeyS: "S",
+    KeyD: "clockwise",
+};
+
+keyboardScope.addEventListener("keydown", e =>{
+    // console.log(WASDRouter);
+    // console.log(e);
+    // var kpCode = e.code;
+    var keyCodeValue = WASDRouter[e.code];
+    if (typeof keyCodeValue !== "undefined"){ // this feels unglamorous
+      inputRouter(keyCodeValue);
+    };
+});
+
 // Start at node 1 facing north
 var currentNodeID = 1;
 var currentHeading = 0;
@@ -16,7 +35,7 @@ var currentHeading = 0;
 // Browser support https://caniuse.com/async-functions
 async function postTravelData(reqBody) {
     try {
-      const response = await fetch ("http://127.0.0.1:8000/travel", {
+      const response = await fetch ("https://app01.andysokay.com/travel", {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         mode: "cors", // no-cors, *cors, same-origin
         cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -80,3 +99,5 @@ buttonForward.onclick = function() {
 buttonClockwise.onclick = function() {
   inputRouter("clockwise");
 }
+
+// 
