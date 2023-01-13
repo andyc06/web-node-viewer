@@ -99,5 +99,3 @@ buttonForward.onclick = function() {
 buttonClockwise.onclick = function() {
   inputRouter("clockwise");
 }
-
-// 
