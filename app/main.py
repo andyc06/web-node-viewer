@@ -33,9 +33,9 @@ app.add_middleware(
 
 # GET method isn't supposed to be used, so suggest that the user
 # open the frontend webpage instead.
-# @app.get("/")
-# async def root():
-#    return {"message": "Try launching game.html in the frontend folder"}
+@app.get("/")
+async def root():
+    return {"message": "GET healthcheck OK"}
 
 
 @app.post("/travel/")
