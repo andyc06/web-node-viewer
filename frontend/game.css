@@ -20,10 +20,14 @@ body {
 }
 .nav-buttons a:hover, .nav-buttons a:active {
     background-color: rgb(107, 38, 255);
-    color: white;
 }
 .nav-info {
     font-family: sans-serif;
     color: black;
     font-size: 1.5rem;
+}
+.small-text {
+    font-family: sans-serif;
+    color: black;
+    font-size: 1.0rem;
 }
