@@ -1,5 +1,6 @@
 FROM --platform=linux/amd64 python:3.11 as build
 
+WORKDIR .
 ADD main.py .
 ADD requirements.txt .
 
