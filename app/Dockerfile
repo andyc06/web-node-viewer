@@ -1,10 +1,10 @@
 FROM --platform=linux/amd64 python:3.11 as build
 
-ADD folder /node_map
-ADD generate_combined_map.py .
-ADD navigator.py .
-ADD startup_helpers.py .
-ADD __init__.py .
+ADD node_map /node_map
+ADD node_map/generate_combined_map.py .
+ADD node_map/navigator.py .
+ADD node_map/startup_helpers.py .
+ADD node_map/__init__.py .
 ADD main.py .
 ADD requirements.txt .
 
